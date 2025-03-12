@@ -1,4 +1,4 @@
-name: WordPress Plugin Release
+name: Build Plugin ZIP
 
 on:
   release:
@@ -10,21 +10,18 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Create Plugin Directory
-        run: |
-          mkdir update-service-log
-          mv !(update-service-log) update-service-log/
-      
-      - name: Zip the Plugin
-        run: |
-          cd update-service-log
-          zip -r ../update-service-log.zip ./*
+        run: mkdir -p update-service-log
+
+      - name: Move Files to Plugin Directory
+        run: mv * update-service-log/
+
+      - name: Zip Plugin
+        run: zip -r update-service-log.zip update-service-log
 
       - name: Upload Release Asset
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v1
         with:
           files: update-service-log.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
