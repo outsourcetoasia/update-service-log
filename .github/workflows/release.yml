@@ -1,4 +1,4 @@
-name: Build Plugin ZIP
+name: Build & Release Plugin
 
 on:
   release:
@@ -15,8 +15,8 @@ jobs:
       - name: Create Plugin Directory
         run: mkdir -p update-service-log
 
-      - name: Move Files to Plugin Directory
-        run: mv * update-service-log/
+      - name: Copy Plugin Files
+        run: rsync -av --progress . update-service-log/ --exclude update-service-log --exclude .git --exclude .github
 
       - name: Zip Plugin
         run: zip -r update-service-log.zip update-service-log
