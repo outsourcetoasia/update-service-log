@@ -3,7 +3,7 @@ name: WordPress Plugin Release
 on:
   push:
     tags:
-      - '*'
+      - '*'  # Runs this action when a new tag is pushed
 
 jobs:
   release:
@@ -22,7 +22,9 @@ jobs:
       - name: Create Plugin ZIP
         run: |
           mkdir -p build
-          zip -r build/update-service-log.zip . -x ".git*" ".github*" "build/*"
+          rsync -av --exclude='.git*' --exclude='.github' --exclude='.idea' --exclude='build' ./ build/update-service-log/
+          cd build
+          zip -r update-service-log.zip update-service-log
 
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v1
