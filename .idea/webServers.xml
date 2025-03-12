@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="368463ef-b6a0-4707-8ffb-b9c1ed868bf7" name="Development Server" url="https://relaunch.live">
+        <fileTransfer rootFolder="/wp-content/plugins/update-service-log" host="192.168.1.5" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
