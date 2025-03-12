@@ -3,18 +3,28 @@
 Plugin Name: Update Service Log
 Plugin URI: http://www.outsourcetoasia.de
 Description: Logs plugin and theme updates with username, date, and time and displays it in the Dashboard
-Version: 1.0
+Version: 1.0.0
 Requires at least: 6.6
 Requires PHP: 8.0.0
+Tested up to: 6.7.2
 Author: Tom Steinczhorn
 Author URI: http://www.outsourcetoasia.de
 License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl.html
+Tags: update, log, service log, dashboard notices
 Text Domain: ota
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
+
+// Include the updater class file.
+require_once plugin_dir_path( __FILE__ ) . 'github-plugin-updater.php';
+
+// Initialize the updater (replace with your GitHub username and repo).
+new GitHub_Plugin_Updater( __FILE__, 'outsourcetoasia', 'update-service-log' );
 
 class UpdateServiceLog {
 	public function __construct() {
