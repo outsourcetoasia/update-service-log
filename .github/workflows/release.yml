@@ -1,1 +1,30 @@
+name: WordPress Plugin Release
 
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Create Plugin Directory
+        run: |
+          mkdir update-service-log
+          mv !(update-service-log) update-service-log/
+      
+      - name: Zip the Plugin
+        run: |
+          cd update-service-log
+          zip -r ../update-service-log.zip ./*
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: update-service-log.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
