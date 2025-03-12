@@ -3,7 +3,7 @@
 Plugin Name: Update Service Log
 Plugin URI: http://www.outsourcetoasia.de
 Description: Logs plugin and theme updates with username, date, and time and displays it in the Dashboard
-Version: 1.0.0
+Version: 1.0.2
 Requires at least: 6.6
 Requires PHP: 8.0.0
 Tested up to: 6.7.2
